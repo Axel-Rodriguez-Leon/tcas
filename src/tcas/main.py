@@ -4,11 +4,11 @@ from .state import State
 # --- threat checks ---
 def own_below_threat(state: State) -> bool:
     return state.own_tracked_altitude < state.other_tracked_altitude
-
+#predicate w/ 1 clause
 
 def own_above_threat(state: State) -> bool:
     return state.other_tracked_altitude < state.own_tracked_altitude
-
+#predicate w/ 1 clause
 
 # --- RA threshold logic ---
 def positive_ra_alt_thresh(state: State, layer: int) -> int:
@@ -21,15 +21,15 @@ def positive_ra_alt_thresh(state: State, layer: int) -> int:
     elif layer == 3:
         return state.positive_ra_alt_thresh_3
     return 0
-
+#4 predicates w/ 1 clause
 
 def alim(state: State) -> int:
     return positive_ra_alt_thresh(state, state.altitude_layer_value)
-
+#neither
 
 def inhibit_biased_climb(state: State) -> int:
     return state.up_separation + 100 if state.climb_inhibit else state.up_separation
-
+#1 predicate & 1 clause
 
 def non_crossing_biased_climb(state: State) -> bool:
     if inhibit_biased_climb(state) > state.down_separation:
@@ -42,6 +42,7 @@ def non_crossing_biased_climb(state: State) -> bool:
             and (state.current_vertical_sep >= 300)
             and (state.up_separation >= alim(state))
         )
+#predicate w/ 1 clause
 
 
 def non_crossing_biased_descend(state: State) -> bool:
