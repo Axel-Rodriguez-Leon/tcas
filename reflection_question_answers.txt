@@ -1,0 +1,30 @@
+The first test suite should be based on predicate coverage and should be located in "test/predicate". 
+You can structure the test suite however you like but each test must indicate (e.g., via a comment) which 
+test requirement(s) it satisfies. Because predicate coverage is equivalent to branch coverage when the predicates 
+are taken from source code, you can enable branch coverage to check your coverage level. 
+
+Is it possible to satisfy this coverage criterion? What was challenging about creating this test suite?
+	I believe that it is possible to satisfy most of the coverage criteria. This is mostly because by 
+    taking a predicate coverage approach, we are only seeing what the end result is of the combined boolean expression 
+    rather than going into individual statements like with a clause coverage approach. What was challenging about creating 
+    this test suite was trying to come up with tests that would pass through most of the clauses so that I can get the 
+    most amount of coverage per test.
+
+The second test suite should be based on active clause coverage and should be located in "test/clause". 
+I'm not aware of a tool that can report MCDC coverage so you will likely need to add some instrumentation 
+(e.g., print values before the decision statement) to check your coverage. 
+
+Is it possible to satisfy this coverage criterion? What was challenging about creating this test suite?
+	I do believe it is possible to satisfy the coverage criterion because by making test suites based on the 
+    clauses, I am testing for every single boolean expression rather than a generalization like with predicates. 
+    What was challenging about creating this test suite was determining if I had the correct number of clauses. 
+    Whereas with predicates, I could understand how many total overl predicates there were, for the clauses 
+    I often found myself either redoing some of the tests or doing tests that felt unnecessary to write.
+
+Compare and contrast the test suites. Does one give you more confidence? Why? What are the branch coverage scores of the test suites?
+	The clause coverage test suite gives me the most confidence not just because it was the one that 
+    gave me 100% code coverage, but because I knew that I was going through each individual statement 
+    rather than skipping through a few through the predicate test suite. However, that one was more tedious 
+    to write because I needed to go through more expressions individually as compared to the predicate test suite. 
+
+Repo Link: https://github.com/Axel-Rodriguez-Leon/tcas
